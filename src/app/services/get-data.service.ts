@@ -1,74 +1,90 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// interface MyShareResponse {  
-//   length: number;
-// }
-
-// interface responseStatus {  
-//   status:String;
-// }
-
 @Injectable({
   providedIn: 'root'
 })
 export class GetDataService {
 
-  baseUrl = "http://localhost:8080/";
+  baseUrl = "http://trader-app-trader-app.openshift28.conygre.com/";
   url="";
   constructor(private http : HttpClient) { }
 
-  // getAllCompany()
-  // {
-  //     this.url = this.baseUrl + "get-all";
-  //     return this.http.get(this.url);       
-  // }
+  getStockData(stockTicker:String, timeStep:String) 
+  {
+    this.url = this.baseUrl + `api/data/company/${stockTicker}/${timeStep}`
+    return this.http.get(this.url);
+  }
 
-  // getWatchList(email)
-  // {
-  //     this.url = this.baseUrl + "watch-list?email=" + email;
-  //     return this.http.get<MyShareResponse>(this.url);       
-  // }
+  getCompanyOverview(stockTicker:String) 
+  {
+    this.url = this.baseUrl + `api/data/company/overview/${stockTicker}`
+    return this.http.get(this.url);
+  }
 
-  // getOneCompany(id)
-  // {
-  //     this.url = this.baseUrl + "get-one?id=" + id;
-  //     return this.http.get(this.url);       
-  // }
+  getStockQuote(stockTicker:String) {
+    this.url = this.baseUrl + `api/data/company/quote/${stockTicker}`
+    return this.http.get(this.url)
+  }
 
-  // getMyShares(email)
-  // {
-  //   this.url = this.baseUrl + "my-share/?email=" + email;
-  //   return this.http.get<MyShareResponse>(this.url);     
-  // }
+  getSectorInformation() {
+    this.url = this.baseUrl + "api/data/sector"
+    return this.http.get(this.url)
+  }
 
-  // getUserDeatils(email)
-  // {
-  //   this.url = this.baseUrl + "get-user/?email=" + email;
-  //   return this.http.get<MyShareResponse>(this.url);     
-  // }
-  
-  // addWatchList(email,id)
-  // {
-  //   this.url = this.baseUrl + "add-watchlist/?email=" + email + "&id=" + id;
-  //   return this.http.get<responseStatus>(this.url);     
-  // }
+  addCashAssets(cashToAdd:String) {
+    this.url = this.baseUrl + "/api/cash/addCashAssetsValue"
+    return this.http.post(this.url, {"cashToAdd": cashToAdd})
+  }
 
-  // removeWatchList(email,id)
-  // {
-  //   this.url = this.baseUrl + "remove-watchlist/?email=" + email + "&id=" + id;
-  //   return this.http.get<responseStatus>(this.url);     
-  // }
+  getCashAssets() {
+    this.url = this.baseUrl + "/api/cash/cashAssetsValue"
+    return this.http.get(this.url)
+  }
 
-  // buyShare(email,id,quantity)
-  // {
-  //   this.url = this.baseUrl + "buy";
-  //   return this.http.post<responseStatus>(this.url, { "email":email, "companyId":id, "quantity":quantity} );               
-  // }
+  setCashAssets(initialCashAssets:String) {
+    this.url = this.baseUrl + "/api/cash/setCashAssetsValue"
+    return this.http.post(this.url, {"initialCashAssets": initialCashAssets})
+  }
 
-  // sellShare(email,id,quantity)
-  // {
-  //   this.url = this.baseUrl + "sell";
-  //   return this.http.post<responseStatus>(this.url, { "email":email, "companyId":id, "quantity":quantity} );               
-  // }
+  findAllHoldings() {
+    this.url = this.baseUrl + "/api/holdings"
+    return this.http.get(this.url)
+  }
+
+  addHolding(companyName:String, id:Number, numberOfShares:Number, tickerSymbol:String) {
+    this.url = this.baseUrl + "/api/holdings"
+    return this.http.post(this.url, {
+      "companyName": companyName,
+      "numberOfShares": numberOfShares,
+      "tickerSymbol": tickerSymbol
+    })
+  }
+
+  deleteHolding(id:Number) {
+    this.url = this.baseUrl + `/api/holdings/${id}`
+    return this.http.delete(this.url)
+  }
+
+  findAllTrades() {
+    this.url = this.baseUrl + "/api/trades"
+    return this.http.get(this.url)
+  }
+
+  addTrade(companyName:String, date:String, orderType:String, price:Number, quantity:Number, tickerSymbol:String) {
+    this.url = this.baseUrl + "/api/trades"
+    return this.http.post(this.url, {
+      "companyName": companyName,
+      "dateEntered": date,
+      "orderType": orderType,
+      "price": price,
+      "quantity": quantity,
+      "tickerSymbol": tickerSymbol
+    })
+  }
+
+  findAllByTickerSymbol(tickerSymbol) {
+    this.url = this.baseUrl + `/api/trades/${tickerSymbol}`
+    return this.http.get(this.url)
+  }
 }
