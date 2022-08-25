@@ -8,6 +8,12 @@
                 <th scope="col">Company Name</th>
                 <th scope="col">Num. of Shares</th>
             </tr>
+            <tr *ngFor="let val of allTrades; let i = index">
+                <td> {{val.tickerSymbol}} </td>
+                <td> {{val.companyName}} </td>
+                <td> {{val.numberOfShares}} </td>
+            </tr>
+
         </thead>
     </table>
 </div> 

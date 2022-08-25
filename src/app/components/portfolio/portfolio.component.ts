@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetDataService } from '../../services/get-data.service'
@@ -8,11 +9,19 @@ import { GetDataService } from '../../services/get-data.service'
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-
-  constructor(private router: Router, 
-    private getDataservice: GetDataService) { }
-
+  allTrades
+  constructor(private router: Router, private http:HttpClient) { }
+  
   ngOnInit() {
+    this.getAllTrades()
+  }
+
+  getAllTrades() {
+    const getData = new GetDataService(this.http);
+    getData.findAllHoldings().subscribe(data => {
+      this.allTrades = data
+      console.log(data)
+    })
   }
 
 }
