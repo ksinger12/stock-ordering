@@ -1,4 +1,4 @@
-def projectName = 'trader-app'
+def projectName = 'trader-app-frontend'
 def version = "0.0.${currentBuild.number}"
 def dockerImageTag = "${projectName}:${version}"
 
