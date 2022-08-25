@@ -3,16 +3,47 @@
     <hr>
 </div>
 
-<div class="info">
+<div class="info" *ngIf="quoteData">
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">Ticker Symbol</th>
-                <td></td>
+                <td> {{quoteData.symbol}} </td>
             </tr>
             <tr>
-
+                <th scope="col">Open</th>
+                <td> {{quoteData.open}} </td>
+            </tr>
+            <tr>
+                <th scope="col">High</th>
+                <td> {{quoteData.high}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Low</th>
+                <td> {{quoteData.low}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Price</th>
+                <td> {{quoteData.price}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Volume</th>
+                <td> {{quoteData.volume}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Previous Close</th>
+                <td> {{quoteData.previousClose}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Change</th>
+                <td> {{quoteData.change}} </td>
+            </tr>
+            <tr>
+                <th scope="col">Change %</th>
+                <td> {{quoteData.changePercent}} </td>
             </tr>
         </thead>
     </table>
 </div>
+
+
