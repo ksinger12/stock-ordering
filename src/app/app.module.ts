@@ -12,13 +12,17 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
+import { StockPageComponent } from 'src/app/components/stock-page/stock-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    SearchComponent,
+    StockPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+form {
+    margin: 4rem;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    font-size: 30px;
+    margin-top: 2rem;
+}
+
+.search-btn {
+    margin: 2rem;
+    padding: 20px 60px 20px 60px;
+    border: none;
+    background-color: rgb(79, 200, 79);
+    font-weight: bold;
+}
+

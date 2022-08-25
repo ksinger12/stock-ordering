@@ -33,12 +33,12 @@ export class GetDataService {
   }
 
   addCashAssets(cashToAdd:String) {
-    this.url = this.baseUrl + "/api/cash/addCashAssetsValue"
+    this.url = this.baseUrl + "api/cash/addCashAssetsValue"
     return this.http.post(this.url, {"cashToAdd": cashToAdd})
   }
 
   getCashAssets() {
-    this.url = this.baseUrl + "/api/cash/cashAssetsValue"
+    this.url = this.baseUrl + "api/cash/cashAssetsValue"
     return this.http.get(this.url)
   }
 
@@ -48,12 +48,12 @@ export class GetDataService {
   }
 
   findAllHoldings() {
-    this.url = this.baseUrl + "/api/holdings"
+    this.url = this.baseUrl + "api/holdings/"
     return this.http.get(this.url)
   }
 
   addHolding(companyName:String, id:Number, numberOfShares:Number, tickerSymbol:String) {
-    this.url = this.baseUrl + "/api/holdings"
+    this.url = this.baseUrl + "/api/holdings/"
     return this.http.post(this.url, {
       "companyName": companyName,
       "numberOfShares": numberOfShares,
@@ -72,7 +72,7 @@ export class GetDataService {
   }
 
   addTrade(companyName:String, date:String, orderType:String, price:Number, quantity:Number, tickerSymbol:String) {
-    this.url = this.baseUrl + "/api/trades"
+    this.url = this.baseUrl + "/api/trades/"
     return this.http.post(this.url, {
       "companyName": companyName,
       "dateEntered": date,
