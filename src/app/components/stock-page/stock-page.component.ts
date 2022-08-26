@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from 'src/app/services/get-data.service';
-
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-stock-page',
@@ -13,15 +13,18 @@ import { GetDataService } from 'src/app/services/get-data.service';
 
 export class StockPageComponent implements OnInit {
   quoteData
-  constructor(private http:HttpClient) { }
+  symbol
+  constructor(private router: ActivatedRoute, private http:HttpClient) { }
 
   ngOnInit() {
+    console.log("VALUE PASSED" + this.router.snapshot.params.symbol)
+    this.symbol = this.router.snapshot.params.symbol
     this.getQuoteData();
   }
 
   getQuoteData() {
     const getData = new GetDataService(this.http);
-    getData.getStockQuote("MSFT").subscribe(data => {
+    getData.getStockQuote(this.symbol).subscribe(data => {
       this.quoteData = data
     })
 
