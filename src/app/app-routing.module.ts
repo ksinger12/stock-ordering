@@ -9,7 +9,7 @@ export const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'stock', component: StockPageComponent}
+  { path: 'search/stock/:symbol', component: StockPageComponent}
 ];
 
 @NgModule({

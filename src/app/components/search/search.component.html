@@ -1,4 +1,16 @@
-<form id="form"> 
-    <input type="search" id="query" name="q" placeholder="Seach Stock Name or Ticker Symbol">
-    <button class="search-btn">Search</button>
+<form #query="ngForm" (ngSubmit)="submitQuery(query.value)">
+    <input type="text" name="query" placeholder="Seach Stock Name or Ticker Symbol" ngModel>
+    <button type="submit" value="submit" class="search-btn">Search</button>
 </form>
+
+<div class="searchResults">
+    <h3>Search results:</h3>
+    <ul>
+        <li *ngFor="let result of searchResults;">
+            <!-- <a routerLink="stock/result['1. symbol']" >{{result["1. symbol"]}}</a> -->
+            <a [routerLink]="['stock', result['1. symbol']]" >{{result["1. symbol"]}}</a>
+        </li>
+    </ul>
+</div>
+
+<router-outlet></router-outlet>

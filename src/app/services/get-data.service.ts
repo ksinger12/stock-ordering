@@ -87,4 +87,9 @@ export class GetDataService {
     this.url = this.baseUrl + `/api/trades/${tickerSymbol}`
     return this.http.get(this.url)
   }
+
+  searchByStockName(query) {
+    this.url = this.baseUrl + `/api/stock/search/${query}`
+    return this.http.get(this.url)
+  }
 }
