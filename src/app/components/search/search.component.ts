@@ -20,8 +20,9 @@ export class SearchComponent implements OnInit {
 
     const getData = new GetDataService(this.http);
     getData.searchByStockName(this.query).subscribe(data => {
-      this.searchResults = data.bestMatches
-      this.symbol = this.searchResults["1. symbol"]
+      this.searchResults = data 
+      this.searchResults = this.searchResults.bestMatches
+      // this.symbol = this.searchResults.bestMatches["1. symbol"]
       console.log('stuff:' + JSON.stringify(this.searchResults))
     })
   }
